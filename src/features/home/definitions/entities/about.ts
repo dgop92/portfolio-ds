@@ -5,6 +5,7 @@ export interface AboutMeItem {
 }
 
 export interface AboutContent {
+  header: string;
   mainDescription: string;
   aboutMeItems: AboutMeItem[];
 }

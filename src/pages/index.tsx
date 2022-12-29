@@ -2,7 +2,7 @@ import { About } from "@features/home/components/About/About";
 import { MainHero } from "@features/home/components/MainHero";
 import { HeroContent } from "@features/home/definitions/entities/hero";
 import { staticHomeRepository } from "@features/home/infrastructure/static-repositories/home.repository.factory";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { AboutContent } from "@features/home/definitions/entities/about";
 import { SupportedLang } from "@/common/types";
 
@@ -22,9 +22,22 @@ const Home: NextPage<HomeProps> = ({ heroContent, aboutContent }) => {
 
 export default Home;
 
-export async function getStaticProps() {
-  const heroContent = await staticHomeRepository.getHeroContent(SupportedLang.EN);
-  const aboutContent = await staticHomeRepository.getAboutContent(SupportedLang.EN);
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  let lang: SupportedLang;
+  switch (locale) {
+    case "en":
+      lang = SupportedLang.EN;
+      break;
+    case "es":
+      lang = SupportedLang.ES;
+      break;
+    default:
+      lang = SupportedLang.EN;
+      break;
+  }
+
+  const heroContent = await staticHomeRepository.getHeroContent(lang);
+  const aboutContent = await staticHomeRepository.getAboutContent(lang);
 
   return {
     props: {
@@ -32,4 +45,4 @@ export async function getStaticProps() {
       aboutContent,
     },
   };
-}
+};

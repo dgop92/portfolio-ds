@@ -27,7 +27,7 @@ export function About({ aboutContent }: AboutProps) {
           }}
           align="center"
         >
-          About me
+          {aboutContent.header}
         </Typography>
         {/* <LayeredWaves width="100%" /> */}
         <LayeredWaves

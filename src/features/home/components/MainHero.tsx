@@ -1,6 +1,8 @@
 import Stack from "@mui/material/Stack";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
+import LanguageIcon from "@mui/icons-material/Language";
+import NextLink from "next/link";
 import { HeroContent } from "@features/home/definitions/entities/hero";
 import { imageShimmer, toBase64 } from "@/lib/imageUtils";
 
@@ -20,6 +22,36 @@ export function MainHero({ heroContent }: MainHeroProps) {
         objectFit="cover"
         style={{ overflow: "hidden", filter: "blur(5px)" }}
       />
+      <Stack
+        direction="row"
+        alignItems="center"
+        sx={{
+          px: 4,
+          py: 2,
+          zIndex: 2,
+          position: "absolute",
+          top: 0,
+          right: 0,
+        }}
+      >
+        <LanguageIcon fontSize="medium" sx={{ mr: 2 }} />
+        <NextLink href="/" passHref locale="es">
+          <Typography
+            variant="body1"
+            sx={{ p: 1, fontWeight: "bold", cursor: "pointer" }}
+          >
+            Es
+          </Typography>
+        </NextLink>
+        <NextLink href="/" passHref locale="en">
+          <Typography
+            variant="body1"
+            sx={{ p: 1, fontWeight: "bold", cursor: "pointer" }}
+          >
+            En
+          </Typography>
+        </NextLink>
+      </Stack>
       <Stack sx={{ zIndex: 2 }} alignItems="center">
         <Typography
           variant="h1"
@@ -37,7 +69,6 @@ export function MainHero({ heroContent }: MainHeroProps) {
             fontFamily: "titleFontFamily",
             fontSize: { xs: "1.2rem", sm: "1.375rem", xl: "1.5rem" },
             letterSpacing: "0.1rem",
-            color: "#BFBFBF",
           }}
         >
           {heroContent.presentation.jobTitle}
