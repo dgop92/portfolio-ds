@@ -39,6 +39,10 @@ module.exports = {
       "react/function-component-definition": 0,
       "react/jsx-filename-extension": [1, { extensions: [".tsx", ".jsx"] }],
       "arrow-body-style": 0,
+
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": ["error"],
+
   
       quotes: ["error", "double", { avoidEscape: true }],
       semi: ["error", "always"],
@@ -46,6 +50,7 @@ module.exports = {
         2,
         {
           code: 88,
+          ignorePattern: "^import .*"
         },
       ],
   

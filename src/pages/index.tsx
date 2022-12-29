@@ -1,16 +1,35 @@
-import { About } from "@features/home/components/About";
+import { About } from "@features/home/components/About/About";
 import { MainHero } from "@features/home/components/MainHero";
-import Stack from "@mui/material/Stack";
+import { HeroContent } from "@features/home/definitions/entities/hero";
+import { staticHomeRepository } from "@features/home/infrastructure/static-repositories/home.repository.factory";
 import type { NextPage } from "next";
-//  sx={{ overflowX: "hidden" }}
+import { AboutContent } from "@features/home/definitions/entities/about";
+import { SupportedLang } from "@/common/types";
 
-const Home: NextPage = () => {
+interface HomeProps {
+  heroContent: HeroContent;
+  aboutContent: AboutContent;
+}
+
+const Home: NextPage<HomeProps> = ({ heroContent, aboutContent }) => {
   return (
     <>
-      <MainHero jobTitle="Python data science" name="Diego Puche" />
-      <About />
+      <MainHero heroContent={heroContent} />
+      <About aboutContent={aboutContent} />
     </>
   );
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const heroContent = await staticHomeRepository.getHeroContent(SupportedLang.EN);
+  const aboutContent = await staticHomeRepository.getAboutContent(SupportedLang.EN);
+
+  return {
+    props: {
+      heroContent,
+      aboutContent,
+    },
+  };
+}

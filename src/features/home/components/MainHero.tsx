@@ -1,14 +1,14 @@
 import Stack from "@mui/material/Stack";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
+import { HeroContent } from "@features/home/definitions/entities/hero";
 import { imageShimmer, toBase64 } from "@/lib/imageUtils";
 
 interface MainHeroProps {
-  name: string;
-  jobTitle: string;
+  heroContent: HeroContent;
 }
 
-export function MainHero({ name, jobTitle }: MainHeroProps) {
+export function MainHero({ heroContent }: MainHeroProps) {
   return (
     <Stack height={560} position="relative" justifyContent="center" alignItems="center">
       <Image
@@ -29,7 +29,7 @@ export function MainHero({ name, jobTitle }: MainHeroProps) {
             fontSize: { xs: "3.5rem", sm: "4rem", xl: "4.5rem" },
           }}
         >
-          {name}
+          {heroContent.presentation.name}
         </Typography>
         <Typography
           variant="h1"
@@ -40,7 +40,7 @@ export function MainHero({ name, jobTitle }: MainHeroProps) {
             color: "#BFBFBF",
           }}
         >
-          {jobTitle}
+          {heroContent.presentation.jobTitle}
         </Typography>
       </Stack>
     </Stack>

@@ -1,0 +1,20 @@
+{
+  "mainDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur fuga ullam debitis veritatis laborum libero et asperiores sequi, alias sapiente ex cupiditate esse minima ipsa nisi voluptatem modi fugit quos ipsam a. Nam fugit, fugiat neque ipsam molestiae quas magnam fuga voluptates nihil. Nemo eius iure quae, nisi sed maiores qui. Perspiciatis explicabo in vitae labore deserunt alias aliquid architecto eveniet",
+  "aboutMeItems": [
+    {
+      "title": "Leadership",
+      "description": "As a leader, I analyze my colleagues and assign them tasks based on their competencies",
+      "svgIconUrl": ""
+    },
+    {
+      "title": "Problem Solving",
+      "description": "Capabilities to implement real-world problems in code",
+      "svgIconUrl": ""
+    },
+    {
+      "title": "Time management",
+      "description": "To manage my time effectively and avoid working under pressure, I carefully plan and organize the tasks I need to complete",
+      "svgIconUrl": ""
+    }
+  ]
+}

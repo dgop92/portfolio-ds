@@ -2,27 +2,15 @@
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import LayeredWaves from "../../../../public/svgs/layered-about-header.svg";
+import { AboutContent } from "@features/home/definitions/entities/about";
+import LayeredWaves from "../../../../../public/svgs/layered-about-header.svg";
 import { AboutMeItem } from "./AboutMeItem";
 
-const ABOUT_ME_ITEMS = [
-  {
-    title: "Leadership",
-    description:
-      "As a leader, I analyze my colleagues and assign them tasks based on their competencies",
-  },
-  {
-    title: "Problem Solving",
-    description: "Capabilities to implement real-world problems in code",
-  },
-  {
-    title: "Time management",
-    description:
-      "To manage my time effectively and avoid working under pressure, I carefully plan and organize the tasks I need to complete",
-  },
-];
+export interface AboutProps {
+  aboutContent: AboutContent;
+}
 
-export function About() {
+export function About({ aboutContent }: AboutProps) {
   return (
     <Stack>
       <Box position="relative">
@@ -58,12 +46,7 @@ export function About() {
           }}
           align="center"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur fuga ullam
-          debitis veritatis laborum libero et asperiores sequi, alias sapiente ex
-          cupiditate esse minima ipsa nisi voluptatem modi fugit quos ipsam a. Nam
-          fugit, fugiat neque ipsam molestiae quas magnam fuga voluptates nihil. Nemo
-          eius iure quae, nisi sed maiores qui. Perspiciatis explicabo in vitae labore
-          deserunt alias aliquid architecto eveniet
+          {aboutContent.mainDescription}
         </Typography>
       </Box>
       <Box
@@ -80,7 +63,7 @@ export function About() {
           mb: 8,
         }}
       >
-        {ABOUT_ME_ITEMS.map((item) => (
+        {aboutContent.aboutMeItems.map((item) => (
           <AboutMeItem key={item.title} {...item} />
         ))}
       </Box>
