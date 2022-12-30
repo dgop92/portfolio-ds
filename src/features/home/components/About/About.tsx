@@ -64,7 +64,7 @@ export function About({ aboutContent }: AboutProps) {
         }}
       >
         {aboutContent.aboutMeItems.map((item) => (
-          <AboutMeItem key={item.title} {...item} />
+          <AboutMeItem key={item.title} aboutMeItemContent={item} />
         ))}
       </Box>
     </Stack>

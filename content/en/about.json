@@ -5,17 +5,17 @@
     {
       "title": "Leadership",
       "description": "As a leader, I analyze my colleagues and assign them tasks based on their competencies",
-      "svgIconUrl": ""
+      "svgIconUrl": "http://127.0.0.1:5500/svgs/location-arrow-solid.svg"
     },
     {
       "title": "Problem Solving",
       "description": "Capabilities to implement real-world problems in code",
-      "svgIconUrl": ""
+      "svgIconUrl": "http://127.0.0.1:5500/svgs/calculator-solid.svg"
     },
     {
       "title": "Time management",
       "description": "To manage my time effectively and avoid working under pressure, I carefully plan and organize the tasks I need to complete",
-      "svgIconUrl": ""
+      "svgIconUrl": "http://127.0.0.1:5500/svgs/hourglass-start-solid.svg"
     }
   ]
 }

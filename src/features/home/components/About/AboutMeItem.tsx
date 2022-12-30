@@ -2,12 +2,15 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
+import { AboutMeItem as AboutMeItemContent } from "../../definitions/entities/about";
 
 interface AboutMeItemProps {
-  title: string;
-  description: string;
+  aboutMeItemContent: AboutMeItemContent;
 }
-export function AboutMeItem({ title, description }: AboutMeItemProps) {
+export function AboutMeItem({
+  aboutMeItemContent: { title, description, svgIconUrl },
+}: AboutMeItemProps) {
   return (
     <Stack>
       <Stack
@@ -22,8 +25,17 @@ export function AboutMeItem({ title, description }: AboutMeItemProps) {
             height: 56,
             borderRadius: "50%",
             backgroundColor: "primary.main",
+            padding: "0.9rem",
           }}
-        />
+        >
+          <Image
+            width="80%"
+            height="80%"
+            src={svgIconUrl}
+            alt="hero image"
+            placeholder="empty"
+          />
+        </Box>
         <Typography
           variant="h5"
           sx={{

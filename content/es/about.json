@@ -5,17 +5,17 @@
     {
       "title": "Liderazgo",
       "description": "Como líder, analizo a mis compañeros y les asigno tareas en función de sus competencias",
-      "svgIconUrl": ""
+      "svgIconUrl": "http://127.0.0.1:5500/svgs/location-arrow-solid.svg"
     },
     {
       "title": "Resolución de problemas",
       "description": "Capacidades para implementar problemas del mundo real en código",
-      "svgIconUrl": ""
+      "svgIconUrl": "http://127.0.0.1:5500/svgs/calculator-solid.svg"
     },
     {
       "title": "Gestión del tiempo",
       "description": "Para gestionar eficazmente mi tiempo y evitar trabajar bajo presión, planifico y organizo cuidadosamente las tareas que debo completar",
-      "svgIconUrl": ""
+      "svgIconUrl": "http://127.0.0.1:5500/svgs/hourglass-start-solid.svg"
     }
   ]
 }
