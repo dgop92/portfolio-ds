@@ -1,0 +1,11 @@
+{
+  "featuredProjects": [
+    {
+      "title": "Pima Indians Diabetes Database",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur fuga ullam debitis veritatis laborum libero et asperiores sequi, alias sapiente ex cupiditate esse minima ipsa nisi voluptatem modi fugit quos ipsam a",
+      "image": "http://127.0.0.1:5500/fp_imgs/diabetes.jpg",
+      "tags": ["Ensemble learning", "Random forest", "Logistic regression"]
+    }
+  ],
+  "header": "Featured Projects"
+}
