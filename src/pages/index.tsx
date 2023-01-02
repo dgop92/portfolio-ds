@@ -6,7 +6,7 @@ import type { GetStaticProps, NextPage } from "next";
 import { AboutContent } from "@features/home/definitions/entities/about";
 import { FeaturedProjects } from "@features/home/components/FeaturedProjects/FeaturedProjects";
 import { FeaturedProjectsContent } from "@features/home/definitions/entities/featured-project";
-import { SupportedLang } from "@/common/types";
+import { getSupportedLang } from "@/common/helpers";
 
 interface HomeProps {
   heroContent: HeroContent;
@@ -31,18 +31,7 @@ const Home: NextPage<HomeProps> = ({
 export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  let lang: SupportedLang;
-  switch (locale) {
-    case "en":
-      lang = SupportedLang.EN;
-      break;
-    case "es":
-      lang = SupportedLang.ES;
-      break;
-    default:
-      lang = SupportedLang.EN;
-      break;
-  }
+  const lang = getSupportedLang(locale);
 
   const heroContent = await staticHomeRepository.getHeroContent(lang);
   const aboutContent = await staticHomeRepository.getAboutContent(lang);

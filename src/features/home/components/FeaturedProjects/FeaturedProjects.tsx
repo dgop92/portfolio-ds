@@ -24,7 +24,7 @@ export function FeaturedProjects({ featuredProjectsContent }: FeaturedProjectsPr
           {featuredProjectsContent.header}
         </Typography>
       </Box>
-      <Stack alignItems="center" pt={4} pb={8}>
+      <Stack alignItems="center" pt={4} pb={8} gap={2}>
         {featuredProjectsContent.featuredProjects.map((project) => (
           <FeaturedProjectCard key={project.title} featuredProject={project} />
         ))}
