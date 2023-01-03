@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { imageShimmer, toBase64 } from "@/lib/imageUtils";
 import { FullProject } from "../definitions/entities/projects";
+import { Markdown } from "./Markdown";
 
 export interface FullProjectCardProps {
   fullProject: FullProject;
@@ -19,7 +20,7 @@ export function FullProjectCard({ fullProject }: FullProjectCardProps) {
         backgroundColor: "primary.dark",
       }}
     >
-      <Box height={400} position="relative">
+      <Box height={450} position="relative">
         <Image
           layout="fill"
           src={fullProject.image}
@@ -32,26 +33,25 @@ export function FullProjectCard({ fullProject }: FullProjectCardProps) {
       </Box>
 
       <Typography
-        variant="h5"
+        variant="h2"
         sx={{
           fontWeight: "bold",
-          fontSize: { xs: "1rem", sm: "1.2rem" },
-          p: 2,
-        }}
-      >
-        &#8618; {fullProject.title}
-      </Typography>
-      <Typography
-        variant="body1"
-        sx={{
-          fontWeight: "light",
-          fontSize: "1rem",
+          fontSize: { xs: "1.5rem", sm: "1.8rem" },
+          py: 2,
           px: 4,
-          mb: { xs: 1, sm: 4 },
+          mt: 2,
         }}
       >
-        {fullProject.content}
+        {fullProject.title}
       </Typography>
+      <Box
+        sx={{
+          px: { xs: 2, sm: 4 },
+          mb: { xs: 1, sm: 2 },
+        }}
+      >
+        <Markdown text={fullProject.content} />
+      </Box>
       <Stack
         direction="row"
         sx={{
