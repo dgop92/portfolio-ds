@@ -7,4 +7,6 @@ export interface FeaturedProject {
 export interface FeaturedProjectsContent {
   featuredProjects: FeaturedProject[];
   header: string;
+  viewAllButton: string;
+  viewCompleteProjectMessage: string;
 }

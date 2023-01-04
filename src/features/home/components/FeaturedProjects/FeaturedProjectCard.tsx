@@ -1,16 +1,23 @@
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { FeaturedProject } from "@features/home/definitions/entities/featured-project";
 import Image from "next/image";
+import NextLink from "next/link";
 import { imageShimmer, toBase64 } from "@/lib/imageUtils";
 
 export interface FeaturedProjectCardProps {
   featuredProject: FeaturedProject;
+  viewCompleteProjectMessage: string;
 }
 
-export function FeaturedProjectCard({ featuredProject }: FeaturedProjectCardProps) {
+export function FeaturedProjectCard({
+  featuredProject,
+  viewCompleteProjectMessage,
+}: FeaturedProjectCardProps) {
   return (
     <Stack
       sx={{
@@ -47,11 +54,20 @@ export function FeaturedProjectCard({ featuredProject }: FeaturedProjectCardProp
           fontWeight: "light",
           fontSize: "1rem",
           px: 4,
-          mb: { xs: 1, sm: 4 },
+          mb: { xs: 1, sm: 2 },
         }}
       >
         {featuredProject.description}
       </Typography>
+      <NextLink href="/projects" passHref>
+        <Button
+          sx={{ color: "text.primary", width: "fit-content", my: 1, mx: 4 }}
+          variant="text"
+          startIcon={<VisibilityIcon />}
+        >
+          {viewCompleteProjectMessage}
+        </Button>
+      </NextLink>
       <Stack
         direction="row"
         sx={{

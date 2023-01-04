@@ -7,5 +7,7 @@
       "tags": ["Ensemble learning", "Random forest", "Logistic regression"]
     }
   ],
-  "header": "Proyectos destacados"
+  "header": "Proyectos destacados",
+  "viewAllButton": "Ver todos los proyectos",
+  "viewCompleteProjectMessage": "Ver proyecto completo"
 }

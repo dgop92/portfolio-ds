@@ -1,9 +1,12 @@
 import type { GetStaticProps, NextPage } from "next";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import NextLink from "next/link";
 import { ProjectsContent } from "@features/projects/definitions/entities/projects";
 import { ProjectsContainer } from "@features/projects/components/ProjectsContainer";
 import { staticProjectsRepository } from "@features/projects/infrastructure/static-repositories/projects.static.repository";
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LayeredWaves from "../../public/svgs/layered-about-header.svg";
 import { getSupportedLang } from "@/common/helpers";
 
@@ -15,6 +18,20 @@ const Projects: NextPage<ProjectsProps> = ({ projectsContent }) => {
   return (
     <>
       <Box position="relative">
+        <NextLink href="/" passHref>
+          <IconButton
+            aria-label="delete"
+            sx={{
+              color: "white",
+              position: "absolute",
+              top: "45%",
+              transform: "translateY(-45%)",
+              left: "1rem",
+            }}
+          >
+            <ArrowBackIcon sx={{ fontSize: "2rem" }} />
+          </IconButton>
+        </NextLink>
         <Typography
           variant="h1"
           sx={{
