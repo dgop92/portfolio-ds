@@ -1,0 +1,16 @@
+{
+  "header": "Contact Me",
+  "contactMeItems": [
+    {
+      "title": "Visit my Github",
+      "icon": "http://127.0.0.1:5500/svgs/github.svg",
+      "link": "https://github.com/dgop92"
+    },
+    {
+      "title": "Visit my Linkedin",
+      "icon": "http://127.0.0.1:5500/svgs/linkedin.svg",
+      "link": "https://www.linkedin.com/in/dgop92"
+    }
+  ],
+  "copyrightMessage": "Developed and designed by Diego Puche"
+}
