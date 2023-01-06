@@ -13,10 +13,10 @@ export interface FeaturedProjectsProps {
 
 export function FeaturedProjects({ featuredProjectsContent }: FeaturedProjectsProps) {
   return (
-    <Stack my={8}>
+    <Stack my={8} component="section">
       <Box sx={{ width: "90%", maxWidth: 1300, alignSelf: "center" }}>
         <Typography
-          variant="h1"
+          variant="h3"
           sx={{
             fontFamily: "titleFontFamily",
             letterSpacing: "0.1rem",

@@ -14,6 +14,7 @@ export function Footer({ footerContent }: FooterProps) {
       justifyContent="center"
       alignItems="center"
       sx={{ backgroundColor: "primary.dark", p: 4 }}
+      component="footer"
     >
       <Typography
         variant="body1"
@@ -54,11 +55,7 @@ export function Footer({ footerContent }: FooterProps) {
                 placeholder="empty"
               />
             </Box>
-            <Typography
-              variant="body1"
-              component="span"
-              sx={{ pl: 2, fontSize: { xs: "1rem", sm: "1.1rem" } }}
-            >
+            <Typography variant="body1" component="span" sx={{ pl: 2 }}>
               {item.title}
             </Typography>
           </Stack>

@@ -25,6 +25,7 @@ export function FeaturedProjectCard({
         maxWidth: 1200,
         backgroundColor: "primary.dark",
       }}
+      component="article"
     >
       <Box height={400} position="relative">
         <Image
@@ -39,7 +40,7 @@ export function FeaturedProjectCard({
       </Box>
 
       <Typography
-        variant="h5"
+        variant="h4"
         sx={{
           fontWeight: "bold",
           fontSize: { xs: "1rem", sm: "1.2rem" },

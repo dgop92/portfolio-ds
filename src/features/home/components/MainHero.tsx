@@ -12,7 +12,13 @@ interface MainHeroProps {
 
 export function MainHero({ heroContent }: MainHeroProps) {
   return (
-    <Stack height={560} position="relative" justifyContent="center" alignItems="center">
+    <Stack
+      component="header"
+      height={560}
+      position="relative"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Image
         layout="fill"
         src="/images/data-blocks.png"
@@ -25,6 +31,7 @@ export function MainHero({ heroContent }: MainHeroProps) {
       <Stack
         direction="row"
         alignItems="center"
+        component="nav"
         sx={{
           px: 4,
           py: 2,
@@ -38,7 +45,14 @@ export function MainHero({ heroContent }: MainHeroProps) {
         <NextLink href="/" passHref locale="es">
           <Typography
             variant="body1"
-            sx={{ p: 1, fontWeight: "bold", cursor: "pointer" }}
+            sx={{
+              p: 1,
+              fontWeight: "bold",
+              cursor: "pointer",
+              textDecoration: "none",
+              color: "text.primary",
+            }}
+            component="a"
           >
             Es
           </Typography>
@@ -46,7 +60,14 @@ export function MainHero({ heroContent }: MainHeroProps) {
         <NextLink href="/" passHref locale="en">
           <Typography
             variant="body1"
-            sx={{ p: 1, fontWeight: "bold", cursor: "pointer" }}
+            sx={{
+              p: 1,
+              fontWeight: "bold",
+              cursor: "pointer",
+              textDecoration: "none",
+              color: "text.primary",
+            }}
+            component="a"
           >
             En
           </Typography>
@@ -64,7 +85,7 @@ export function MainHero({ heroContent }: MainHeroProps) {
           {heroContent.presentation.name}
         </Typography>
         <Typography
-          variant="h1"
+          variant="h2"
           sx={{
             fontFamily: "titleFontFamily",
             fontSize: { xs: "1.2rem", sm: "1.375rem", xl: "1.5rem" },

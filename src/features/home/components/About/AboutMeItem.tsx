@@ -12,7 +12,7 @@ export function AboutMeItem({
   aboutMeItemContent: { title, description, svgIconUrl },
 }: AboutMeItemProps) {
   return (
-    <Stack>
+    <Stack component="article">
       <Stack
         direction="row"
         sx={{
@@ -37,7 +37,7 @@ export function AboutMeItem({
           />
         </Box>
         <Typography
-          variant="h5"
+          variant="h4"
           sx={{
             fontWeight: "bold",
             fontSize: { xs: "1rem", sm: "1.2rem" },

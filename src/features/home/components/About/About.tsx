@@ -12,10 +12,10 @@ export interface AboutProps {
 
 export function About({ aboutContent }: AboutProps) {
   return (
-    <Stack>
+    <Stack component="section">
       <Box position="relative">
         <Typography
-          variant="h1"
+          variant="h3"
           sx={{
             fontFamily: "titleFontFamily",
             letterSpacing: "0.1rem",
