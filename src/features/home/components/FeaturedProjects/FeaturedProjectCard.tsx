@@ -7,7 +7,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { FeaturedProject } from "@features/home/definitions/entities/featured-project";
 import Image from "next/image";
 import NextLink from "next/link";
-import { imageShimmer, toBase64 } from "@/lib/imageUtils";
+import { imageShimmer, toBase64 } from "@/common/imageUtils";
 
 export interface FeaturedProjectCardProps {
   featuredProject: FeaturedProject;

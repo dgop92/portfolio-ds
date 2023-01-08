@@ -1,5 +1,5 @@
 import { IHomeRepository } from "../definitions/repositories/home.repository.def";
-import { graphQLClient } from "../infrastructure/dato-cms/graphql-client";
+import { graphQLClient } from "../../../common/graphql-client";
 import { HomeDatoCMSRepository } from "../infrastructure/dato-cms/home.datocms.repository";
 import { staticHomeRepository } from "../infrastructure/static-repositories/home.static.repository";
 

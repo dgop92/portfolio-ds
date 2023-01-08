@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import { imageShimmer, toBase64 } from "@/lib/imageUtils";
+import { imageShimmer, toBase64 } from "@/common/imageUtils";
 import { FullProject } from "../definitions/entities/projects";
 import { Markdown } from "./Markdown";
 

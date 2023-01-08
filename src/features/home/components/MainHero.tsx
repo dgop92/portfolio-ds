@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import LanguageIcon from "@mui/icons-material/Language";
 import NextLink from "next/link";
 import { HeroContent } from "@features/home/definitions/entities/hero";
-import { imageShimmer, toBase64 } from "@/lib/imageUtils";
+import { imageShimmer, toBase64 } from "@/common/imageUtils";
 
 interface MainHeroProps {
   heroContent: HeroContent;
