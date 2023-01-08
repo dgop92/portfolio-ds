@@ -7,7 +7,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["127.0.0.1"],
+    domains: ["127.0.0.1", "www.datocms-assets.com"],
   },
   webpack(config) {
     config.module.rules.push({

@@ -25,7 +25,10 @@ module.exports = {
         files: ["*.ts", "*.tsx"],
   
         extends: ["plugin:@typescript-eslint/recommended"],
-  
+        rules: {
+          "@typescript-eslint/no-explicit-any": 0,
+          "no-useless-constructor": 0,
+        },
         parserOptions: {
           project: ["./tsconfig.json"], // Specify it only for TypeScript files
         },
