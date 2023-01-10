@@ -16,11 +16,11 @@ export function FullProjectCard({ fullProject }: FullProjectCardProps) {
     <Stack
       sx={{
         width: { xs: "95%", sm: "90%" },
-        maxWidth: 1200,
+        maxWidth: 1400,
         backgroundColor: "primary.dark",
       }}
     >
-      <Box height={450} position="relative">
+      <Box position="relative" sx={{ height: { xs: 400, sm: 450 } }}>
         <Image
           layout="fill"
           src={fullProject.image}

@@ -1,6 +1,8 @@
 import { SupportedLang } from "@/common/types";
-import { ProjectsContent } from "../entities/projects";
+import { FullProject, ProjectPageContent } from "../entities/projects";
 
-export interface ProjectsRepository {
-  getProjectsContent: (lang: SupportedLang) => Promise<ProjectsContent>;
+export interface IProjectsRepository {
+  getProjectBySlug: (slug: string, lang: SupportedLang) => Promise<FullProject>;
+  getProjects: (lang: SupportedLang) => Promise<FullProject[]>;
+  getPageContent: (slug: string, lang: SupportedLang) => Promise<ProjectPageContent>;
 }

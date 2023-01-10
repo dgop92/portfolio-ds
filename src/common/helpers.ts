@@ -11,3 +11,7 @@ export function getSupportedLang(locale: string | undefined) {
 
   return SupportedLang.EN;
 }
+
+export function slugifyTitle(title: string) {
+  return title.toLowerCase().replace(/ /g, "-");
+}

@@ -1,10 +1,17 @@
-import { ProjectsRepository } from "@features/projects/definitions/repositories/projects.repository.def";
-import { ProjectsContent } from "@features/projects/definitions/entities/projects";
+import { IProjectsRepository } from "@features/projects/definitions/repositories/projects.repository.def";
+import { FullProject } from "@features/projects/definitions/entities/projects";
 import { SupportedLang } from "@/common/types";
 import projectsContentEn from "../../../../../content/en/projects.json";
 import projectsContentEs from "../../../../../content/es/projects.json";
 
-export function getProjectsContent(lang: SupportedLang): Promise<ProjectsContent> {
+type StaticRepoProjectPage = {
+  header: string;
+  projects: FullProject[];
+};
+
+export function getProjectsContent(
+  lang: SupportedLang
+): Promise<StaticRepoProjectPage> {
   if (lang === SupportedLang.EN) {
     return Promise.resolve(projectsContentEn);
   }
@@ -16,6 +23,28 @@ export function getProjectsContent(lang: SupportedLang): Promise<ProjectsContent
   throw new Error("Unsupported language");
 }
 
-export const staticProjectsRepository: ProjectsRepository = {
-  getProjectsContent,
+export const staticProjectsRepository: IProjectsRepository = {
+  getProjectBySlug: async (slug, lang) => {
+    const projectsContent = await getProjectsContent(lang);
+    const project = projectsContent.projects.find((p) => p.slug === slug);
+    if (!project) {
+      throw new Error("Project not found");
+    }
+    return project;
+  },
+  getProjects: async (lang) => {
+    const projectsContent = await getProjectsContent(lang);
+    return projectsContent.projects;
+  },
+  getPageContent: async (slug, lang) => {
+    const projectsContent = await getProjectsContent(lang);
+    const project = projectsContent.projects.find((p) => p.slug === slug);
+    if (!project) {
+      throw new Error("Project not found");
+    }
+    return {
+      header: projectsContent.header,
+      project,
+    };
+  },
 };

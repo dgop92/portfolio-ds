@@ -8,6 +8,7 @@ import { FeaturedProject } from "@features/home/definitions/entities/featured-pr
 import Image from "next/image";
 import NextLink from "next/link";
 import { imageShimmer, toBase64 } from "@/common/imageUtils";
+import { slugifyTitle } from "@/common/helpers";
 
 export interface FeaturedProjectCardProps {
   featuredProject: FeaturedProject;
@@ -60,7 +61,7 @@ export function FeaturedProjectCard({
       >
         {featuredProject.description}
       </Typography>
-      <NextLink href="/projects" passHref>
+      <NextLink href={`/projects/${slugifyTitle(featuredProject.title)}`} passHref>
         <Button
           sx={{ color: "text.primary", width: "fit-content", my: 1, mx: 4 }}
           variant="text"
