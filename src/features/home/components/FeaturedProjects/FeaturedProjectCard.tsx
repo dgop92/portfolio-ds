@@ -22,13 +22,11 @@ export function FeaturedProjectCard({
   return (
     <Stack
       sx={{
-        width: { xs: "95%", sm: "90%" },
-        maxWidth: 1200,
         backgroundColor: "primary.dark",
       }}
       component="article"
     >
-      <Box height={400} position="relative">
+      <Box position="relative" sx={{ height: { xs: 300, sm: 400 } }}>
         <Image
           layout="fill"
           src={featuredProject.image}
@@ -36,7 +34,7 @@ export function FeaturedProjectCard({
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(imageShimmer(250, 250))}`}
           objectFit="cover"
-          style={{ overflow: "hidden", filter: "blur(5px)" }}
+          style={{ overflow: "hidden" }}
         />
       </Box>
 
@@ -57,6 +55,7 @@ export function FeaturedProjectCard({
           fontSize: "1rem",
           px: 4,
           mb: { xs: 1, sm: 2 },
+          flexGrow: 1,
         }}
       >
         {featuredProject.description}

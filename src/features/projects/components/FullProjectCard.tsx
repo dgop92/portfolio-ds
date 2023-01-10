@@ -28,7 +28,7 @@ export function FullProjectCard({ fullProject }: FullProjectCardProps) {
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(imageShimmer(250, 250))}`}
           objectFit="cover"
-          style={{ overflow: "hidden", filter: "blur(5px)" }}
+          style={{ overflow: "hidden" }}
         />
       </Box>
 

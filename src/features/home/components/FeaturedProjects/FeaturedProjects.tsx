@@ -10,8 +10,8 @@ export interface FeaturedProjectsProps {
 
 export function FeaturedProjects({ featuredProjectsContent }: FeaturedProjectsProps) {
   return (
-    <Stack my={8} component="section">
-      <Box sx={{ width: "90%", maxWidth: 1300, alignSelf: "center" }}>
+    <Stack direction="row" my={8} component="section" justifyContent="center">
+      <Box sx={{ width: { xs: "95%", sm: "90%" }, maxWidth: 1500 }}>
         <Typography
           variant="h3"
           sx={{
@@ -23,18 +23,29 @@ export function FeaturedProjects({ featuredProjectsContent }: FeaturedProjectsPr
         >
           {featuredProjectsContent.header}
         </Typography>
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(auto-fill, minmax(300px, 1fr))",
+              sm: "repeat(auto-fill, minmax(450px, 1fr))",
+            },
+            gap: 2,
+            alignSelf: "center",
+            py: 4,
+          }}
+        >
+          {featuredProjectsContent.featuredProjects.map((project) => (
+            <FeaturedProjectCard
+              key={project.title}
+              featuredProject={project}
+              viewCompleteProjectMessage={
+                featuredProjectsContent.viewCompleteProjectMessage
+              }
+            />
+          ))}
+        </Box>
       </Box>
-      <Stack alignItems="center" py={4} gap={2}>
-        {featuredProjectsContent.featuredProjects.map((project) => (
-          <FeaturedProjectCard
-            key={project.title}
-            featuredProject={project}
-            viewCompleteProjectMessage={
-              featuredProjectsContent.viewCompleteProjectMessage
-            }
-          />
-        ))}
-      </Stack>
     </Stack>
   );
 }
