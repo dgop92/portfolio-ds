@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -11,6 +12,7 @@ import { FullProjectCard } from "@features/projects/components/FullProjectCard";
 import LayeredWaves from "../../../public/svgs/layered-about-header.svg";
 import { getSupportedLang } from "@/common/helpers";
 import { SupportedLang } from "@/common/types";
+import { APP_ENV_VARS } from "@/common/config/app-env-vars";
 
 interface ProjectPageProps {
   projectContent: ProjectPageContent;
@@ -75,7 +77,7 @@ export const getStaticProps: GetStaticProps<ProjectPageProps, IParams> = async (
   params,
 }) => {
   const lang = getSupportedLang(locale);
-  const repository = projectsRepositoryFactory("static");
+  const repository = projectsRepositoryFactory(APP_ENV_VARS.repositoryProvider);
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const projectSlug = params!.slug!;
   const projectPageContent = await repository.getPageContent(projectSlug, lang);
@@ -88,11 +90,22 @@ export const getStaticProps: GetStaticProps<ProjectPageProps, IParams> = async (
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const repository = projectsRepositoryFactory("static");
+  const repository = projectsRepositoryFactory(APP_ENV_VARS.repositoryProvider);
   const projects = await repository.getProjects(SupportedLang.EN);
-  const paths = projects.map((project) => ({
-    params: { slug: project.slug },
-  }));
+
+  const supportedLocales = Object.values(SupportedLang);
+  const paths = [];
+
+  for (const project of projects) {
+    for (const locale of supportedLocales) {
+      paths.push({
+        params: {
+          slug: project.slug,
+        },
+        locale,
+      });
+    }
+  }
 
   return {
     paths,

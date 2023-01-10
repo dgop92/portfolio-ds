@@ -1,22 +1,21 @@
+import { RepositoryProviderName } from "@/common/types";
 import { IProjectsRepository } from "../definitions/repositories/projects.repository.def";
 import { staticProjectsRepository } from "../infrastructure/static-repositories/projects.static.repository";
 
-type ProviderName = "static" | "datoCMS";
-
 let projectsRepository: IProjectsRepository;
 
-function getRepository(providerName: ProviderName): IProjectsRepository {
+function getRepository(providerName: RepositoryProviderName): IProjectsRepository {
   switch (providerName) {
     case "static":
       return staticProjectsRepository;
-    case "datoCMS":
+    case "cms":
       throw new Error("Not implemented yet");
     default:
       throw new Error("Unknown provider name");
   }
 }
 
-export function projectsRepositoryFactory(providerName: ProviderName) {
+export function projectsRepositoryFactory(providerName: RepositoryProviderName) {
   if (projectsRepository === undefined) {
     projectsRepository = getRepository(providerName);
   }

@@ -9,6 +9,7 @@ import { FooterContent } from "@features/home/definitions/entities/footer";
 import { Footer } from "@features/home/components/Footer";
 import { homeRepositoryFactory } from "@features/home/factories/home.repository.factory";
 import { getSupportedLang } from "@/common/helpers";
+import { APP_ENV_VARS } from "@/common/config/app-env-vars";
 
 interface HomeProps {
   heroContent: HeroContent;
@@ -38,7 +39,7 @@ export default Home;
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const lang = getSupportedLang(locale);
 
-  const repository = homeRepositoryFactory("datoCMS");
+  const repository = homeRepositoryFactory(APP_ENV_VARS.repositoryProvider);
 
   const heroContent = await repository.getHeroContent(lang);
   const aboutContent = await repository.getAboutContent(lang);
