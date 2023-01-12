@@ -16,7 +16,7 @@ export function FullProjectCard({ fullProject }: FullProjectCardProps) {
     <Stack
       sx={{
         width: { xs: "95%", sm: "90%" },
-        maxWidth: 1400,
+        maxWidth: 1200,
         backgroundColor: "primary.dark",
       }}
     >

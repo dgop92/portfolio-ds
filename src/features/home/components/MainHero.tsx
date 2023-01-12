@@ -21,7 +21,7 @@ export function MainHero({ heroContent }: MainHeroProps) {
     >
       <Image
         layout="fill"
-        src="/images/data-blocks.png"
+        src="/images/data-blocks.jpg"
         alt="hero image"
         placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(imageShimmer(250, 250))}`}
