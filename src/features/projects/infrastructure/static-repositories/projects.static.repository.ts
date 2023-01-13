@@ -1,26 +1,17 @@
 import { IProjectsRepository } from "@features/projects/definitions/repositories/projects.repository.def";
 import { FullProject } from "@features/projects/definitions/entities/projects";
 import { SupportedLang } from "@/common/types";
-import projectsContentEn from "../../../../../content/en/projects.json";
-import projectsContentEs from "../../../../../content/es/projects.json";
 
 type StaticRepoProjectPage = {
   header: string;
   projects: FullProject[];
 };
 
-export function getProjectsContent(
+export async function getProjectsContent(
   lang: SupportedLang
 ): Promise<StaticRepoProjectPage> {
-  if (lang === SupportedLang.EN) {
-    return Promise.resolve(projectsContentEn);
-  }
-
-  if (lang === SupportedLang.ES) {
-    return Promise.resolve(projectsContentEs);
-  }
-
-  throw new Error("Unsupported language");
+  const content = await import(`../../../../../content/${lang}/projects.json`);
+  return content.default;
 }
 
 export const staticProjectsRepository: IProjectsRepository = {

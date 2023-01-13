@@ -4,80 +4,55 @@ import {
   FullProject,
   ProjectPageContent,
 } from "@features/projects/definitions/entities/projects";
-import { propertyIsNotNull, SupportedLang } from "@/common/types";
+import { SupportedLang } from "@/common/types";
 import {
   ProjectPageContentModel,
   FullProjectModel,
 } from "./models/projects.datocms.model";
-import { PROJECTS_PAGE_QUERY } from "./projects-query";
+import { ALL_PROJECTS_QUERY, PROJECT_PAGE_CONTENT_QUERY } from "./projects-query";
 import { fromFullProjectModelToDomain } from "./transformers";
 
 type PageContentModel = Omit<ProjectPageContentModel, "projects">;
 
-type PageContentModelLocalized = Record<SupportedLang, PageContentModel | null>;
-type ProjectsLocalized = Record<SupportedLang, FullProjectModel[] | null>;
-
 export class ProjectsDatoCMSRepository implements IProjectsRepository {
-  private projectPageContentModel: PageContentModelLocalized;
-
-  private projects: ProjectsLocalized;
-
-  constructor(private client: GraphQLClient) {
-    this.projectPageContentModel = {
-      en: null,
-      es: null,
-    };
-    this.projects = {
-      en: null,
-      es: null,
-    };
-  }
+  constructor(private client: GraphQLClient) {}
 
   async getProjectBySlug(slug: string, lang: SupportedLang): Promise<FullProject> {
-    await this.fetchAllContent(lang);
-    if (propertyIsNotNull(this.projects, lang)) {
-      const project = this.projects[lang].find((p) => p.slug === slug);
-      if (!project) {
-        throw new Error(`project with slug ${slug} not found`);
-      }
+    const result = await this.client.request<{
+      projectContent: { projects: FullProjectModel[] };
+    }>(ALL_PROJECTS_QUERY, {
+      locale: lang,
+    });
+
+    const project = result.projectContent.projects.find((p) => p.slug === slug);
+
+    if (project) {
       return fromFullProjectModelToDomain(project);
     }
 
-    throw new Error("could not fetch content from cms");
+    throw new Error(`could not find project ${slug}`);
   }
 
   async getProjects(lang: SupportedLang): Promise<FullProject[]> {
-    await this.fetchAllContent(lang);
-    if (propertyIsNotNull(this.projects, lang)) {
-      return this.projects[lang].map(fromFullProjectModelToDomain);
-    }
+    const result = await this.client.request<{
+      projectContent: { projects: FullProjectModel[] };
+    }>(ALL_PROJECTS_QUERY, {
+      locale: lang,
+    });
 
-    throw new Error("could not fetch content from cms");
+    return result.projectContent.projects.map(fromFullProjectModelToDomain);
   }
 
   async getPageContent(slug: string, lang: SupportedLang): Promise<ProjectPageContent> {
-    await this.fetchAllContent(lang);
-    const project = await this.getProjectBySlug(slug, lang);
-    if (propertyIsNotNull(this.projectPageContentModel, lang)) {
-      return {
-        header: this.projectPageContentModel[lang].header,
-        project,
-      };
-    }
-
-    throw new Error("could not fetch content from cms");
-  }
-
-  private async fetchAllContent(lang: SupportedLang): Promise<void> {
-    if (this.projects[lang] === null) {
-      const result = await this.client.request<{
-        projectContent: PageContentModel & { projects: FullProjectModel[] };
-      }>(PROJECTS_PAGE_QUERY, {
-        locale: lang,
-      });
-      const { projects, ...content } = result.projectContent;
-      this.projects[lang] = projects;
-      this.projectPageContentModel[lang] = content;
-    }
+    const result = await this.client.request<{
+      projectContent: PageContentModel;
+    }>(PROJECT_PAGE_CONTENT_QUERY, {
+      locale: lang,
+    });
+    const fullProject = await this.getProjectBySlug(slug, lang);
+    return {
+      header: result.projectContent.header,
+      project: fullProject,
+    };
   }
 }

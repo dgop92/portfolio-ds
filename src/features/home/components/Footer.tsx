@@ -51,7 +51,7 @@ export function Footer({ footerContent }: FooterProps) {
                 width="100%"
                 height="100%"
                 src={item.icon}
-                alt="hero image"
+                alt={`footer ${item.title} icon`}
                 placeholder="empty"
               />
             </Box>

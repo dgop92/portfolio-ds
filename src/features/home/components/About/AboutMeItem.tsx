@@ -32,7 +32,7 @@ export function AboutMeItem({
             width="80%"
             height="80%"
             src={svgIconUrl}
-            alt="hero image"
+            alt={`about me ${title} icon`}
             placeholder="empty"
           />
         </Box>
