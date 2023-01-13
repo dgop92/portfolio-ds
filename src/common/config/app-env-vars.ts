@@ -14,10 +14,10 @@ function getRepositoryProviderName(key: string) {
 }
 
 export const APP_ENV_VARS = {
-  NODE_ENV: getOsEnv("NODE_ENV"),
-  isProduction: getOsEnv("NODE_ENV") === "production",
-  isTest: getOsEnv("NODE_ENV") === "test",
-  isDevelopment: getOsEnv("NODE_ENV") === "development",
+  NODE_ENV: process.env.NODE_ENV,
+  isProduction: process.env.NODE_ENV === "production",
+  isTest: process.env.NODE_ENV === "test",
+  isDevelopment: process.env.NODE_ENV === "development",
   cms: {
     API_TOKEN: getOsEnv("NEXT_DATOCMS_API_TOKEN"),
   },
