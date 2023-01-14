@@ -1,12 +1,12 @@
 import { RepositoryProviderName } from "../types";
-import { getOsEnv } from "./env-utils";
+import { getOsEnv, parseIntOrThrow } from "./env-utils";
 
 function isRepositoryProviderName(value: string): value is RepositoryProviderName {
   return ["cms", "static"].includes(value);
 }
 
 function getRepositoryProviderName(key: string) {
-  const value = getOsEnv("NEXT_REPOSITORY_PROVIDER");
+  const value = getOsEnv("REPOSITORY_PROVIDER");
   if (!isRepositoryProviderName(value)) {
     throw new Error(`Invalid value for ${key} environment variable`);
   }
@@ -19,7 +19,8 @@ export const APP_ENV_VARS = {
   isTest: process.env.NODE_ENV === "test",
   isDevelopment: process.env.NODE_ENV === "development",
   cms: {
-    API_TOKEN: getOsEnv("NEXT_DATOCMS_API_TOKEN"),
+    API_TOKEN: getOsEnv("DATOCMS_API_TOKEN"),
   },
-  repositoryProvider: getRepositoryProviderName("NEXT_REPOSITORY_PROVIDER"),
+  repositoryProvider: getRepositoryProviderName("REPOSITORY_PROVIDER"),
+  content_revalidation: parseIntOrThrow(getOsEnv("CONTENT_REVALIDATION")),
 };

@@ -60,5 +60,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       featuredProjectsContent,
       footerContent,
     },
+    revalidate: APP_ENV_VARS.content_revalidation,
   };
 };

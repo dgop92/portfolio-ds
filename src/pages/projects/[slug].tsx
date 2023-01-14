@@ -100,6 +100,7 @@ export const getStaticProps: GetStaticProps<ProjectPageProps, IParams> = async (
     props: {
       projectContent: projectPageContent,
     },
+    revalidate: APP_ENV_VARS.content_revalidation,
   };
 };
 
